@@ -1,19 +1,184 @@
 <html>
-	<head>
-		<title> hola</title>	
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-	</head>
-	<body>
-		<h1>Como estas?</h1>
+<head>
+	<title> The food Club</title>	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+</head>
+<body ng-app="thefoodclubMenuApp" id="ng-app" class="ng-scope">
+	<div class="nav-pane h-non-desktop show-for-small-only">
+		<!-- Only mobile -->
+		<ul class="panel-nav">
+			<a href="https://www.eatclub.com/orders/" alt="My Orders" target="_self">
+				<li>
+					My Orders
+				</li>
+			</a>
 
-		<a href="https://pruebascable.firebaseapp.com/">
-			<button type="button" class="btn btn-default btn-lg" >
-			  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
-			</button>
-		</a>
+			<a href="https://www.eatclub.com/menu/" alt="Menu" target="_self">
+				<li>
+					Menu
+				</li>
+			</a>
 
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-	</body>
+			<a href="https://www.eatclub.com/groups/" alt="Group Ordering" target="_self">
+				<li>
+					Group Ordering
+				</li>
+			</a>
+
+			<a href="https://www.eatclub.com/accounts/" alt="Account" target="_self">
+				<li>
+					Account
+				</li>
+			</a>
+
+			<a href="https://www.eatclub.com/accounts/favorites/view/" alt="My Favorites" target="_self">
+				<li>
+					My Favorites
+				</li>
+			</a>
+
+			<a href="https://www.eatclub.com/test-kitchen/" alt="Test Kitchen" target="_self">
+				<li>
+					Test Kitchen
+				</li>
+			</a>
+			<a href="https://www.eatclub.com/accounts/logout/" target="_self">
+				<li>
+					Logout
+				</li>
+			</a>
+		</ul>
+		<!-- en of mobile nav -->
+
+		<div class="page-wrapper">
+			<header>
+				<div class="row">
+					<span class="header-logo show-for-medium-up medium-1 columns">
+						<a href="https://www.eatclub.com/" target="_self">
+							<img src="./EAT Club - Menu_files/logo.b2870a27de1c.svg" class="header-logo-img">
+						</a>
+					</span>
+					<span class="header-links-columns small-12 medium-11 columns">
+
+						<span class="header-links row show-for-medium-up">
+							<span id="contextual-nav">
+
+								<span class="">
+									<a class="header-link first-header-link selected-header-link" href="https://www.eatclub.com/menu/" target="_self">Daily Menu</a>
+								</span>
+
+								<span class="">
+									<a class="header-link" id="group-ordering-top-button" href="https://www.eatclub.com/groups/" target="_self">Group Ordering</a>
+								</span>
+								<span class="">
+									<a class="header-link" href="https://www.eatclub.com/orders/" title="My Orders" target="_self">My Orders</a>
+								</span>
+
+							</span>
+
+
+
+							<span class="header-account-options text-right">
+								<span class="header-link top-account-option">
+									Hi Matias <i class="nomicon nomicon-caret-down"></i>
+								</span>
+								<div>
+									<ul class="account-dropdown-options">
+
+										<li class="account-dropdown-option">
+											<a class="header-link" href="https://www.eatclub.com/accounts/favorites/view/" title="My Favorites" target="_self">My Favorites</a>
+										</li>
+
+										<li class="account-dropdown-option">
+											<a class="header-link" href="https://www.eatclub.com/accounts/" title="Account" target="_self">Account</a>
+										</li>
+
+										<li class="account-dropdown-option">
+											<a class="header-link" href="https://www.eatclub.com/test-kitchen/" title="Test Kitchen" target="_self">Test Kitchen</a>
+										</li>
+										<li class="account-dropdown-option">
+											<a class="header-link" href="https://www.eatclub.com/accounts/logout/" title="Logout" target="_self">Logout</a>
+										</li>
+									</ul>
+								</div>
+							</span>
+						</span>
+
+						<div class="menu show-for-small-only">
+							<span class="header-logo logo-mobile">
+								<img src="./EAT Club - Menu_files/logo.b2870a27de1c.svg" class="header-logo-img">
+							</span>
+							<div class="hamburger h-non-desktop" style="background-image: url(&#39;/static//img/hamburger.svg&#39;)"></div>
+						</div>
+					</span>
+				</div>
+			</header>
+
+
+			<div ng-controller="MenuDaysCtrl" class="ng-scope">
+				<div class="sticky-placeholder" style="height: 54px; margin: 0px;"><div class="menu-days-container sticky locked sticking" style="transform: translateY(0px); top: 0px;">
+					<div class="row">
+						<!-- Need to define medium and large for ie8 -->
+						<div class="small-11 columns">
+							<!-- ngRepeat: date in dates --><div class="small-2 columns show-for-medium-up day hover-box-cont ng-scope selected" ng-class="{selected: selectedDay==($index + 1)}" ng-repeat="date in dates">
+							<div class="day-box">
+								<div class="day-element ng-binding" ng-class="{closed: closedDates.indexOf(date.value) &gt; -1}" ng-click="changeDay($index + 1)">
+									Mon | Nov 9<sup class="ng-binding">th</sup>
+									<span class="nomicon nomicon-check-circle ordered-checkmark ng-hide" ng-show="currentOrders[date.YYYYMMDD].length &gt; 0"></span>
+								</div>
+								<div class="hover-box no-order-yet" ng-show="currentOrders &amp;&amp; closedDates.indexOf(date.value) == -1" ng-class="{&#39;no-order-yet&#39;: currentOrders[date.YYYYMMDD] == null}" style="">
+									<div class="your-order ng-hide" ng-show="currentOrders[date.YYYYMMDD].length &gt; 1">
+										<div class="content-section ng-binding">You ordered  items</div>
+                <!--<div class="survey-section" ng-class="{'show-survey': showSurvey[date.YYYYMMDD]}">
+                  <span class="looking-forward" ng-click="showSurvey[date.YYYYMMDD] = !showSurvey[date.YYYYMMDD]">Looking forward to it?</span>
+                  <div class="faces">
+                    <span class="nomicon" ng-class="{'nomicon-happy': orderSatisfaction[date.YYYYMMDD] !== 0, 'nomicon-happy-filled': orderSatisfaction[date.YYYYMMDD] === 0}" ng-click="updateSatisfaction(0, date.YYYYMMDD)"></span>
+                    <span class="nomicon" ng-class="{'nomicon-meh': orderSatisfaction[date.YYYYMMDD] !== 1, 'nomicon-meh-filled': orderSatisfaction[date.YYYYMMDD] === 1}" ng-click="updateSatisfaction(1, date.YYYYMMDD)"></span>
+                    <span class="nomicon" ng-class="{'nomicon-sad': orderSatisfaction[date.YYYYMMDD] !== 2, 'nomicon-sad-filled': orderSatisfaction[date.YYYYMMDD] === 2}" ng-click="updateSatisfaction(2, date.YYYYMMDD)"></span>
+                  </div>
+              </div>-->
+          	</div>
+          <div class="your-order ng-hide" ng-show="currentOrders[date.YYYYMMDD].length == 1">
+          	<div class="content-section">
+          		You ordered the<br><span style="font-weight: 600;" class="ng-binding"></span>
+          	</div>
+                <!--<div class="survey-section" ng-class="{'show-survey': showSurvey[date.YYYYMMDD]}">
+                  <span class="looking-forward" ng-click="showSurvey[date.YYYYMMDD] = !showSurvey[date.YYYYMMDD]">Looking forward to it?</span>
+                  <div class="faces">
+                    <span class="nomicon" ng-class="{'nomicon-happy': orderSatisfaction[date.YYYYMMDD] !== 0, 'nomicon-happy-filled': orderSatisfaction[date.YYYYMMDD] === 0}" ng-click="updateSatisfaction(0, date.YYYYMMDD)"></span>
+                    <span class="nomicon" ng-class="{'nomicon-meh': orderSatisfaction[date.YYYYMMDD] !== 1, 'nomicon-meh-filled': orderSatisfaction[date.YYYYMMDD] === 1}" ng-click="updateSatisfaction(1, date.YYYYMMDD)"></span>
+                    <span class="nomicon" ng-class="{'nomicon-sad': orderSatisfaction[date.YYYYMMDD] !== 2, 'nomicon-sad-filled': orderSatisfaction[date.YYYYMMDD] === 2}" ng-click="updateSatisfaction(2, date.YYYYMMDD)"></span>
+                  </div>
+              </div>-->
+	        </div>
+	        <span class="your-order" ng-show="currentOrders[date.YYYYMMDD] == null">
+	          	<div class="content-section">
+	          		You have <span style="font-weight:600;">no order</span>
+	          	</div>
+	        </span>
+  		</div>
+	</div>
+</div>
+
+
+<a href="https://pruebascable.firebaseapp.com/">
+	<button type="button" class="btn btn-default btn-lg" >
+		<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+	</button>
+</a>
+<a href="mercadopago.html">
+	<button type="button" class="btn btn-default btn-lg" >
+		<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Pagar
+	</button>
+</a>
+<a href="test.html">
+	<button type="button" class="btn btn-default btn-lg" >
+		<span class="glyphicon glyphicon-star" aria-hidden="true"></span> php
+	</button>
+</a>
+
+<!--  compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+</body>
 </html>
